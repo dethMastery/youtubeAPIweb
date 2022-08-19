@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Silkscreen', cursive;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -28,40 +30,37 @@ body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+div.container {
+  text-align: center;
+  justify-content: center;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+.container h1 {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #f7df1eaa);
-}
-
-.card {
-  padding: 2em;
+input[type=text] {
+  width: 10px;
+  font-size: 18px;
+  margin: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'Silkscreen', cursive;
+  transition: all .3s;
 }
 
-.read-the-docs {
-  color: #888;
+input[type=text]:focus {
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  border: 1px solid coral;
 }
 
 button {
