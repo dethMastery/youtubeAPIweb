@@ -132,6 +132,8 @@ let pbt = document.querySelector('#pBT')
 let uTime = document.querySelector('#upTime')
 let dTime = document.querySelector('#downTime')
 
+let loop = document.querySelector('#loop')
+
 let volUP = document.querySelector('#volUP')
 let vol = document.querySelector('#vol')
 let volDWN = document.querySelector('#volDWN')
@@ -181,6 +183,7 @@ if(!isNode) {
 
   pbt.addEventListener("click", ppBT)
   pl.addEventListener("playing", pCheck)
+  pl.addEventListener("playing", lCheck)
   pl.addEventListener("pause", pCheck)
 
   function ppBT() {
@@ -230,4 +233,25 @@ if(!isNode) {
   let tvol = Math.floor(pl.volume * 10)
   let cvol = parseInt(tvol)
   vol.innerHTML = "Vol : " + cvol
+
+  loop.addEventListener("click", lToggle)
+  loop.innerHTML = 'Loop'
+
+  function lToggle() {
+    if (pl.loop == false) {
+      pl.loop = true
+      loop.innerHTML = 'Loop OFF'
+    } else if (pl.loop == true) {
+      pl.loop = false
+      loop.innerHTML = 'Loop ON'
+    }
+  }
+
+  function lCheck() {
+    if (pl.loop == false) {
+      loop.innerHTML = 'Loop ON'
+    } else if (pl.loop == true) {
+      loop.innerHTML = 'Loop OFF'
+    }
+  }
 }
