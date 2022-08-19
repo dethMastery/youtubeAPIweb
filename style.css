@@ -52,6 +52,8 @@ input[type=text] {
   margin-right: 0;
   text-align: center;
   padding: 1rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
   font-family: 'Silkscreen', cursive;
   transition: all .3s;
 }
@@ -80,6 +82,35 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.videoControl {
+  background-color: whitesmoke;
+  color: #2e2f2f;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.videoControl .control progress {
+  width: 15rem;
+		padding: 1rem;
+		color: coral;
+}
+
+.videoControl button {
+  border-radius: 8px;
+  border: 2px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.videoControl button:hover {
+  border: 2px solid coral;
 }
 
 @media (prefers-color-scheme: light) {
