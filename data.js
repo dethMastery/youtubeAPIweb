@@ -43,7 +43,9 @@ document.querySelector('#app').innerHTML = `
         <br />
 
         <div class="button">
+          <button id="downTime">-5</button>
           <button id="pBT">Pause</button>
+          <button id="upTime">+5</button>
         </div>
         <br />
       </div>
@@ -79,6 +81,8 @@ let cDur = document.querySelector('#currentTime')
 let fDur = document.querySelector('#duration')
 
 let pbt = document.querySelector('#pBT')
+let uTime = document.querySelector('#upTime')
+let dTime = document.querySelector('#downTime')
 
 if(!isNode) {
   pl.ontimeupdate = function () {
@@ -141,6 +145,17 @@ if(!isNode) {
     } else if (pl.paused == false) {
       pbt.innerHTML = 'Pause'
     }
+  }
+
+  uTime.addEventListener("click", plusTime)
+  dTime.addEventListener("click", delTime)
+
+  function plusTime() {
+    pl.currentTime = pl.currentTime + 5
+  }
+
+  function delTime() {
+    pl.currentTime = pl.currentTime - 5
   }
 }
 
