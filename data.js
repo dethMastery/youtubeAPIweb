@@ -30,7 +30,22 @@ document.querySelector('#app').innerHTML = `
       <br />
       
       <div class="control">
-        <progress id="time" value="0" max="100"></progress>
+        <progress id="time" value="0" max="100"></progress> <br />
+
+        <span id="currentTime">
+          xx:xx
+        </span>
+        &nbsp;/&nbsp;
+        <span id="duration">
+          xx:xx
+        </span>
+        <br />
+        <br />
+
+        <div class="button">
+          <button id="pBT">Pause</button>
+        </div>
+        <br />
       </div>
 
       <a href="#" id="download" download target="_blank">
@@ -57,53 +72,78 @@ axiosCall().then(data => {
   document.querySelector('#download').download = data.info.display_id + '.mp4'
 })
 
-function mediaSession() {
+let pl = document.querySelector('#player')
+let dur = document.querySelector('#time')
 
-}
+let cDur = document.querySelector('#currentTime')
+let fDur = document.querySelector('#duration')
+
+let pbt = document.querySelector('#pBT')
 
 if(!isNode) {
-  let pl = document.querySelector('#player')
-  let dur = document.querySelector('#time')
-
   pl.ontimeupdate = function () {
     var percentage = (pl.currentTime / pl.duration) * 100
     dur.value = percentage
 
-    // var i = setInterval(function () {
-    //   if (pl.readyState > 0) {
-    //     var fmin = parseInt(pl.duration / 60, 10)
-    //     var fsec = parseInt(pl.duration % 60, 10)
+    var i = setInterval(function () {
+      if (pl.readyState > 0) {
+        var fmin = parseInt(pl.duration / 60, 10)
+        var fsec = parseInt(pl.duration % 60, 10)
 
-    //     if (fmin < 10) {
-    //       fmin = "0" + fmin
-    //     }
+        if (fmin < 10) {
+          fmin = "0" + fmin
+        }
 
-    //     if (fsec < 10) {
-    //       fsec = "0" + fsec
-    //     }
+        if (fsec < 10) {
+          fsec = "0" + fsec
+        }
 
-    //     fDur.innerHTML = fmin + ":" + fsec
+        fDur.innerHTML = fmin + ":" + fsec
 
-    //     clearInterval(i)
-    //   }
-    // }, 200)
+        clearInterval(i)
+      }
+    }, 200)
 
-    // var n = setInterval(function () {
-    //   if (pl.readyState > 0) {
-    //     var cmin = parseInt(pl.currentTime / 60, 10)
-    //     var csec = parseInt(pl.currentTime % 60, 10)
+    var n = setInterval(function () {
+      if (pl.readyState > 0) {
+        var cmin = parseInt(pl.currentTime / 60, 10)
+        var csec = parseInt(pl.currentTime % 60, 10)
 
-    //     if (cmin < 10) {
-    //       cmin = "0" + cmin
-    //     }
+        if (cmin < 10) {
+          cmin = "0" + cmin
+        }
 
-    //     if (csec < 10) {
-    //       csec = "0" + csec
-    //     }
+        if (csec < 10) {
+          csec = "0" + csec
+        }
 
-    //     cDur.innerHTML = cmin + ":" + csec
-    //     clearInterval(n)
-    //   }
-    // }, 200)
+        cDur.innerHTML = cmin + ":" + csec
+        clearInterval(n)
+      }
+    }, 200)
   }
+
+  pbt.addEventListener("click", ppBT)
+  pl.addEventListener("playing", pCheck)
+  pl.addEventListener("pause", pCheck)
+
+  function ppBT() {
+    if (pl.paused == true) {
+      pl.play()
+    } else if (pl.paused == false) {
+      pl.pause()
+    }
+  }
+
+  function pCheck() {
+    if (pl.paused == true) {
+      pbt.innerHTML = 'Play'
+    } else if (pl.paused == false) {
+      pbt.innerHTML = 'Pause'
+    }
+  }
+}
+
+function mediaSession() {
+
 }

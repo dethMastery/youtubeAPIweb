@@ -113,6 +113,10 @@ button:focus-visible {
   border: 2px solid coral;
 }
 
+.hidden {
+  display: none;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
