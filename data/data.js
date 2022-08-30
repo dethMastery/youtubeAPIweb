@@ -6,7 +6,7 @@ let url = window.location.href
 let spt = url.split('?')[1]
 let data = spt.split('=')[1]
 
-let api = `https://yt-heroku-detzz.herokuapp.com/api/info?url=${data}`
+let api = `https://yt.kitzu.me/api/?link=${data}`
 
 document.querySelector('#app').innerHTML = `
   <div class="container">
